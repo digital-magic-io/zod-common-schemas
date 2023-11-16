@@ -38,3 +38,16 @@ export const NumericValuesRangeSchema = z.object({
   to: z.number().optional()
 })
 export type NumericValuesRange = z.infer<typeof NumericValuesRangeSchema>
+
+const ISOLocalDateRegex = /^\d{4}-([0]\d|1[0-2])-([0-2]\d|3[01])$/
+const Time24hRegex = /^(2[0-3]|[0-1]?[\d]):[0-5][\d]:[0-5][\d]$/
+const Time24hNoSecondsRegExp = /^(2[0-3]|[0-1]?[\d]):[0-5][\d]$/
+
+export const LocalDateSchema = z.string().min(1).regex(ISOLocalDateRegex)
+export type LocalDate = z.infer<typeof LocalDateSchema>
+
+export const LocalTimeSchema = z.string().min(1).regex(Time24hRegex)
+export type LocalTime = z.infer<typeof LocalTimeSchema>
+
+export const LocalTimeNoSecondsSchema = z.string().min(1).regex(Time24hNoSecondsRegExp)
+export type LocalTimeNoSeconds = z.infer<typeof LocalTimeNoSecondsSchema>
