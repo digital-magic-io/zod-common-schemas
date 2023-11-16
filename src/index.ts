@@ -1,3 +1,2 @@
-export const hello = (): void => {
-  console.log('Hello')
-}
+export * from './schema'
+export * from './utils'
